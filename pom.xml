@@ -10,21 +10,13 @@
     <version>7</version>
   </parent>
 
-  <groupId>org.juricamigac</groupId>
-  <artifactId>slingspecificannotations</artifactId>
+  <groupId>com.juricamigac</groupId>
+  <artifactId>sling-specific-annotations</artifactId>
   <version>0.0.1</version>
 
   <packaging>bundle</packaging>
 
   <name>Sling specific annotations</name>
-
-  <licenses>
-    <license>
-      <name>Apache 2</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
 
   <distributionManagement>
     <repository>
@@ -38,12 +30,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <license.year>20xx</license.year>
-    <license.name>My Name</license.name>
-
-    <bundle.name>${project.groupId} :: ${project.artifactId}</bundle.name>
-    <bundle.symbolicName>${project.groupId}.${project.artifactId}</bundle.symbolicName>
-    <bundle.namespace>${project.groupId}.${project.artifactId}</bundle.namespace>
+    <license.year>2022</license.year>
+    <aem.sdk.version>2021.11.6058.20211123T163652Z-211000</aem.sdk.version>
+    <project.package.id>slingspecificannotations</project.package.id>
+    <bundle.name>${project.groupId} :: ${project.package.id}</bundle.name>
+    <bundle.symbolicName>${project.groupId}.${project.package.id}</bundle.symbolicName>
+    <bundle.namespace>${project.groupId}.${project.package.id}</bundle.namespace>
 
     <slf4j.version>1.7.7</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
@@ -89,11 +81,6 @@
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
           <version>2.4.0</version>
-        </plugin>
-        <plugin>
-          <groupId>com.mycila.maven-license-plugin</groupId>
-          <artifactId>maven-license-plugin</artifactId>
-          <version>1.9.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -157,33 +144,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>com.mycila.maven-license-plugin</groupId>
-        <artifactId>maven-license-plugin</artifactId>
-        <configuration>
-          <header>src/license/header.txt</header>
-          <strictCheck>true</strictCheck>
-          <excludes>
-            <exclude>.gitignore</exclude>
-            <exclude>.idea/**</exclude>
-            <exclude>.settings/**</exclude>
-            <exclude>README.md</exclude>
-            <exclude>src/test/resources/**</exclude>
-          </excludes>
-          <properties>
-            <name>${license.name}</name>
-            <year>${license.year}</year>
-          </properties>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>deploy</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <mavenExecutorId>forked-path</mavenExecutorId>
@@ -200,7 +160,7 @@
     <dependency>
       <groupId>com.adobe.aem</groupId>
       <artifactId>aem-sdk-api</artifactId>
-      <version>2021.11.6058.20211123T163652Z-211000</version>
+      <version>${aem.sdk.version}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
