@@ -1,4 +1,4 @@
-package org.juricamigac.slingspecificannotations.annotations;
+package com.juricamigac.slingspecificannotations.annotations;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.models.annotations.Source;

@@ -1,4 +1,4 @@
-package org.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor;
+package com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor;
 
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.spi.injectorspecific.AbstractInjectAnnotationProcessor2;
