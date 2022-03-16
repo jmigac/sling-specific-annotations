@@ -1,4 +1,4 @@
-package org.juricamigac.slingspecificannotations.dataprocessor;
+package com.juricamigac.slingspecificannotations.dataprocessor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -8,8 +8,8 @@ import org.apache.sling.models.spi.DisposalCallbackRegistry;
 import org.apache.sling.models.spi.Injector;
 import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2;
 import org.apache.sling.models.spi.injectorspecific.StaticInjectAnnotationProcessorFactory;
-import org.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
-import org.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
+import com.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
+import com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.propertytypes.ServiceRanking;
 

@@ -31,6 +31,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <license.year>2022</license.year>
+    <project.build.by>Jurica Migač</project.build.by>
     <aem.sdk.version>2021.11.6058.20211123T163652Z-211000</aem.sdk.version>
     <project.package.id>slingspecificannotations</project.package.id>
     <bundle.name>${project.groupId} :: ${project.package.id}</bundle.name>
@@ -97,12 +98,11 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
+            <Built-By>${project.build.by}</Built-By>
             <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
             <Bundle-Version>${project.version}</Bundle-Version>
             <Embed-Dependency>*;scope=compile|runtime;type=!pom;inline=true</Embed-Dependency>
-            <Import-Package>*;resolution:=optional</Import-Package>
-            <Export-Package>${bundle.namespace}.*;version="${project.version}"</Export-Package>
-            <Private-Package>!*</Private-Package>
+            <Export-Package>${bundle.namespace}.*;${project.version}</Export-Package>
           </instructions>
         </configuration>
       </plugin>
