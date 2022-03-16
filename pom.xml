@@ -10,8 +10,8 @@
     <version>7</version>
   </parent>
 
-  <groupId>org.juricamigac</groupId>
-  <artifactId>slingspecificannotations</artifactId>
+  <groupId>com.juricamigac</groupId>
+  <artifactId>sling-specific-annotations</artifactId>
   <version>0.0.1</version>
 
   <packaging>bundle</packaging>
@@ -38,12 +38,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <license.year>20xx</license.year>
-    <license.name>My Name</license.name>
+    <license.year>2022</license.year>
 
-    <bundle.name>${project.groupId} :: ${project.artifactId}</bundle.name>
-    <bundle.symbolicName>${project.groupId}.${project.artifactId}</bundle.symbolicName>
-    <bundle.namespace>${project.groupId}.${project.artifactId}</bundle.namespace>
+    <project.package.id>slingspecificannotations</project.package.id>
+    <bundle.name>${project.groupId} :: ${project.package.id}</bundle.name>
+    <bundle.symbolicName>${project.groupId}.${project.package.id}</bundle.symbolicName>
+    <bundle.namespace>${project.groupId}.${project.package.id}</bundle.namespace>
 
     <slf4j.version>1.7.7</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
