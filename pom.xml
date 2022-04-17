@@ -3,21 +3,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
-
   <groupId>com.juricamigac</groupId>
   <artifactId>sling-specific-annotations</artifactId>
-  <version>0.0.1</version>
-
+  <version>0.0.2</version>
   <packaging>bundle</packaging>
-
   <name>Sling specific annotations</name>
-
   <distributionManagement>
     <repository>
       <id>github</id>
@@ -25,11 +20,9 @@
       <url>https://maven.pkg.github.com/jmigac/sling-specific-annotations</url>
     </repository>
   </distributionManagement>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
     <license.year>2022</license.year>
     <project.build.by>Jurica Migač</project.build.by>
     <aem.sdk.version>2021.11.6058.20211123T163652Z-211000</aem.sdk.version>
@@ -37,10 +30,8 @@
     <bundle.name>${project.groupId} :: ${project.package.id}</bundle.name>
     <bundle.symbolicName>${project.groupId}.${project.package.id}</bundle.symbolicName>
     <bundle.namespace>${project.groupId}.${project.package.id}</bundle.namespace>
-
     <slf4j.version>1.7.7</slf4j.version>
-    <log4j.version>1.2.17</log4j.version>
-    
+    <log4j.version>1.2.16</log4j.version>
     <junit.version>4.11</junit.version>
     <mockito.version>1.9.5</mockito.version>
   </properties>
@@ -102,7 +93,7 @@
             <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
             <Bundle-Version>${project.version}</Bundle-Version>
             <Embed-Dependency>*;scope=compile|runtime;type=!pom;inline=true</Embed-Dependency>
-            <Export-Package>${bundle.namespace}.*;${project.version}</Export-Package>
+            <Export-Package>${bundle.namespace}.*;version=${project.version}</Export-Package>
           </instructions>
         </configuration>
       </plugin>
@@ -189,25 +180,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-
-    <!-- test dependencies -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>${mockito.version}</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 

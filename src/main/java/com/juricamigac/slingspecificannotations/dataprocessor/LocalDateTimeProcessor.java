@@ -1,5 +1,8 @@
 package com.juricamigac.slingspecificannotations.dataprocessor;
 
+import com.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
+import com.juricamigac.slingspecificannotations.constants.ServiceRankingConstants;
+import com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -8,10 +11,7 @@ import org.apache.sling.models.spi.DisposalCallbackRegistry;
 import org.apache.sling.models.spi.Injector;
 import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2;
 import org.apache.sling.models.spi.injectorspecific.StaticInjectAnnotationProcessorFactory;
-import com.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
-import com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.propertytypes.ServiceRanking;
 
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Type;
@@ -19,9 +19,13 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
+import static org.osgi.framework.Constants.SERVICE_RANKING;
+
 @Slf4j
-@Component(immediate = true, service = { Injector.class, StaticInjectAnnotationProcessorFactory.class })
-@ServiceRanking(LocalDateTimeProcessor.SERVICE_RANKING)
+@Component(
+        immediate = true,
+        service = {Injector.class, StaticInjectAnnotationProcessorFactory.class},
+        property = {SERVICE_RANKING + ":Integer=" + ServiceRankingConstants.SLING_ANNOTATIONS_SERVICE_RANKING})
 public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationProcessorFactory {
 
     protected static final int SERVICE_RANKING = Integer.MAX_VALUE;

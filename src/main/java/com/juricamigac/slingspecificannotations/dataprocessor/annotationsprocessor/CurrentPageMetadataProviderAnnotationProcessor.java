@@ -3,7 +3,7 @@ package com.juricamigac.slingspecificannotations.dataprocessor.annotationsproces
 import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.spi.injectorspecific.AbstractInjectAnnotationProcessor2;
 
-public class RequestedDateTimeMetadataProviderAnnotationProcessor extends AbstractInjectAnnotationProcessor2 {
+public class CurrentPageMetadataProviderAnnotationProcessor extends AbstractInjectAnnotationProcessor2 {
 
     @Override
     public InjectionStrategy getInjectionStrategy() {

@@ -7,12 +7,12 @@ public class RequestedDateMetadataProviderAnnotationProcessor extends AbstractIn
 
     @Override
     public InjectionStrategy getInjectionStrategy() {
-        return InjectionStrategy.DEFAULT;
+        return InjectionStrategy.OPTIONAL;
     }
 
     @Override
     public Boolean isOptional() {
-        return Boolean.FALSE;
+        return Boolean.TRUE;
     }
 
 }
