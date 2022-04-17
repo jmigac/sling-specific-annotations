@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.juricamigac</groupId>
   <artifactId>sling-specific-annotations</artifactId>
-  <version>0.0.2.1</version>
+  <version>0.0.2</version>
   <packaging>bundle</packaging>
   <name>Sling specific annotations</name>
   <distributionManagement>
