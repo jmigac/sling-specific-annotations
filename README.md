@@ -70,6 +70,16 @@ private LocalDateTime date;
 private LocalDatetime date;
 ```
 
+```
+@CurrentPage
+private Page page;
+```
+
+```
+@PageTemplate
+private Template template;
+```
+
 Annotations `LocalDateValueMapValue` and `LocalDateTimeValueMapValue` have the same properties as ordinary `@ValueMapValue` to inject object with different name or in different structure path.
 
 ## Known issues of dependency not getting resolved
@@ -89,8 +99,7 @@ If your bundle can't resolve the dependency, there might be a issue that it's no
             <configuration>
                 <bnd><![CDATA[
 Import-Package: javax.annotation;version=0.0.0,*
-                com.juricamigac.aem.slingspecificannotations.*;0.0.1,*
-Export-Package: com.juricamigac.aem.slingspecificannotations.*;0.0.1,\
+Export-Package: com.juricamigac.slingspecificannotations.*;0.0.2,\
                     ]]></bnd>
             </configuration>
         </execution>
