@@ -1,9 +1,11 @@
 package com.juricamigac.slingspecificannotations.dataprocessor;
 
-import com.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
-import com.juricamigac.slingspecificannotations.constants.ServiceRankingConstants;
-import com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
-import lombok.extern.slf4j.Slf4j;
+import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -13,11 +15,11 @@ import org.apache.sling.models.spi.injectorspecific.InjectAnnotationProcessor2;
 import org.apache.sling.models.spi.injectorspecific.StaticInjectAnnotationProcessorFactory;
 import org.osgi.service.component.annotations.Component;
 
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Type;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
+import com.juricamigac.slingspecificannotations.annotations.LocalDateTimeValueMapValue;
+import com.juricamigac.slingspecificannotations.constants.ServiceRankingConstants;
+import com.juricamigac.slingspecificannotations.dataprocessor.annotationsprocessor.RequestedDateTimeMetadataProviderAnnotationProcessor;
+
+import lombok.extern.slf4j.Slf4j;
 
 import static org.osgi.framework.Constants.SERVICE_RANKING;
 
@@ -28,7 +30,6 @@ import static org.osgi.framework.Constants.SERVICE_RANKING;
         property = {SERVICE_RANKING + ":Integer=" + ServiceRankingConstants.SLING_ANNOTATIONS_SERVICE_RANKING})
 public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationProcessorFactory {
 
-    protected static final int SERVICE_RANKING = Integer.MAX_VALUE;
     private static final String INJECTION_NAME = "local-date-time-provider-injector";
 
     @Override
@@ -37,7 +38,7 @@ public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationP
     }
 
     @Override
-    public Object getValue(Object adaptable, String fieldName, Type type, AnnotatedElement annotatedElement, DisposalCallbackRegistry disposalCallbackRegistry) {
+    public Object getValue(final Object adaptable, final String fieldName, final Type type, final AnnotatedElement annotatedElement, final DisposalCallbackRegistry disposalCallbackRegistry) {
         if (adaptable instanceof SlingHttpServletRequest && annotatedElement.isAnnotationPresent(LocalDateTimeValueMapValue.class)) {
             return this.getLocalDateTimeFromAdaptableRequest(adaptable, annotatedElement, fieldName);
         } else if (adaptable instanceof Resource && annotatedElement.isAnnotationPresent(LocalDateTimeValueMapValue.class)) {
@@ -46,7 +47,7 @@ public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationP
         return null;
     }
 
-    private LocalDateTime getLocalDateTimeFromAdaptableResource(Object adaptable, AnnotatedElement annotatedElement, String fieldName) {
+    private LocalDateTime getLocalDateTimeFromAdaptableResource(final Object adaptable, final AnnotatedElement annotatedElement, final String fieldName) {
         try {
             final LocalDateTimeValueMapValue annotation = annotatedElement.getAnnotation(LocalDateTimeValueMapValue.class);
             final Resource resource = (Resource) adaptable;
@@ -57,7 +58,7 @@ public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationP
         return null;
     }
 
-    private LocalDateTime getLocalDateTimeFromAdaptableRequest(final Object adaptable, AnnotatedElement annotatedElement, final String fieldName) {
+    private LocalDateTime getLocalDateTimeFromAdaptableRequest(final Object adaptable, final AnnotatedElement annotatedElement, final String fieldName) {
         try {
             final LocalDateTimeValueMapValue annotation = annotatedElement.getAnnotation(LocalDateTimeValueMapValue.class);
             final Resource resource = ((SlingHttpServletRequest) adaptable).getResource();
@@ -87,8 +88,8 @@ public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationP
     }
 
     @Override
-    public InjectAnnotationProcessor2 createAnnotationProcessor(AnnotatedElement annotatedElement) {
-        LocalDateTimeValueMapValue annotation = annotatedElement.getAnnotation(LocalDateTimeValueMapValue.class);
+    public InjectAnnotationProcessor2 createAnnotationProcessor(final AnnotatedElement annotatedElement) {
+        final LocalDateTimeValueMapValue annotation = annotatedElement.getAnnotation(LocalDateTimeValueMapValue.class);
         if (annotation != null) {
             return new RequestedDateTimeMetadataProviderAnnotationProcessor();
         }
@@ -99,7 +100,7 @@ public class LocalDateTimeProcessor implements Injector, StaticInjectAnnotationP
         return StringUtils.isNotEmpty(annotation.name()) ? annotation.name() : fieldName;
     }
 
-    private LocalDateTime convertDateToLocalDateTime(Date dateToConvert) {
+    private LocalDateTime convertDateToLocalDateTime(final Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDateTime();

@@ -36,7 +36,7 @@ public class LocalDateProcessor implements Injector, StaticInjectAnnotationProce
     }
 
     @Override
-    public Object getValue(Object adaptable, String fieldName, Type type, AnnotatedElement annotatedElement, DisposalCallbackRegistry disposalCallbackRegistry) {
+    public Object getValue(final Object adaptable, final String fieldName, final Type type, final AnnotatedElement annotatedElement, final DisposalCallbackRegistry disposalCallbackRegistry) {
         if (adaptable instanceof SlingHttpServletRequest && annotatedElement.isAnnotationPresent(LocalDateValueMapValue.class)) {
             return this.getLocalDateFromAdaptableRequest(adaptable, annotatedElement, fieldName);
         } else if (adaptable instanceof Resource && annotatedElement.isAnnotationPresent(LocalDateValueMapValue.class)) {
@@ -45,7 +45,7 @@ public class LocalDateProcessor implements Injector, StaticInjectAnnotationProce
         return null;
     }
 
-    private LocalDate getLocalDateFromAdaptableResource(Object adaptable, AnnotatedElement annotatedElement, String fieldName) {
+    private LocalDate getLocalDateFromAdaptableResource(final Object adaptable, final AnnotatedElement annotatedElement, final String fieldName) {
         try {
             final LocalDateValueMapValue annotation = annotatedElement.getAnnotation(LocalDateValueMapValue.class);
             final Resource resource = (Resource) adaptable;
@@ -56,7 +56,7 @@ public class LocalDateProcessor implements Injector, StaticInjectAnnotationProce
         return null;
     }
 
-    private LocalDate getLocalDateFromAdaptableRequest(final Object adaptable, AnnotatedElement annotatedElement, final String fieldName) {
+    private LocalDate getLocalDateFromAdaptableRequest(final Object adaptable, final AnnotatedElement annotatedElement, final String fieldName) {
         try {
             final LocalDateValueMapValue annotation = annotatedElement.getAnnotation(LocalDateValueMapValue.class);
             final Resource resource = ((SlingHttpServletRequest) adaptable).getResource();
@@ -86,8 +86,8 @@ public class LocalDateProcessor implements Injector, StaticInjectAnnotationProce
     }
 
     @Override
-    public InjectAnnotationProcessor2 createAnnotationProcessor(AnnotatedElement annotatedElement) {
-        LocalDateValueMapValue annotation = annotatedElement.getAnnotation(LocalDateValueMapValue.class);
+    public InjectAnnotationProcessor2 createAnnotationProcessor(final AnnotatedElement annotatedElement) {
+        final LocalDateValueMapValue annotation = annotatedElement.getAnnotation(LocalDateValueMapValue.class);
         if(annotation != null) {
             return new RequestedDateMetadataProviderAnnotationProcessor();
         }
@@ -98,7 +98,7 @@ public class LocalDateProcessor implements Injector, StaticInjectAnnotationProce
         return StringUtils.isNotEmpty(annotation.name()) ? annotation.name() : fieldName;
     }
 
-    private LocalDate convertDateToLocalDate(Date dateToConvert) {
+    private LocalDate convertDateToLocalDate(final Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
