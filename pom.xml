@@ -23,9 +23,9 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <license.year>2022</license.year>
+    <license.year>2024</license.year>
     <project.build.by>Jurica Migač</project.build.by>
-    <aem.sdk.version>2021.11.6058.20211123T163652Z-211000</aem.sdk.version>
+    <aem.sdk.version>2024.2.15262.20240224T002940Z-231200</aem.sdk.version>
     <project.package.id>slingspecificannotations</project.package.id>
     <bundle.name>${project.groupId} :: ${project.package.id}</bundle.name>
     <bundle.symbolicName>${project.groupId}.${project.package.id}</bundle.symbolicName>
@@ -181,6 +181,76 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+
+    <!-- Testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>4.1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>4.1.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit-addons</groupId>
+      <artifactId>junit-addons</artifactId>
+      <version>1.4</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>xercesImpl</artifactId>
+          <groupId>xerces</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>io.wcm</groupId>
+      <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
+      <scope>test</scope>
+      <version>5.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.sling</groupId>
+      <artifactId>org.apache.sling.testing.caconfig-mock-plugin</artifactId>
+      <version>1.4.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.adobe.cq</groupId>
+      <artifactId>core.wcm.components.testing.aem-mock-plugin</artifactId>
+      <version>2.23.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.wcm</groupId>
+      <artifactId>io.wcm.testing.wcm-io-mock.sling</artifactId>
+      <version>1.0.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.tngtech.archunit</groupId>
+      <artifactId>archunit-junit5</artifactId>
+      <version>0.17.0</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Required to be able to support injection with @Self and @Via -->
+    <dependency>
+      <groupId>org.apache.sling</groupId>
+      <artifactId>org.apache.sling.models.impl</artifactId>
+      <version>1.4.4</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <profiles>
