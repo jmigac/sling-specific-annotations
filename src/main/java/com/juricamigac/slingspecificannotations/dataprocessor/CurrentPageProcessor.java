@@ -37,7 +37,7 @@ public class CurrentPageProcessor implements Injector, StaticInjectAnnotationPro
     }
 
     @Override
-    public Object getValue(Object adaptable, String fieldName, Type type, AnnotatedElement annotatedElement, DisposalCallbackRegistry disposalCallbackRegistry) {
+    public Object getValue(final Object adaptable, final String fieldName, final Type type, final AnnotatedElement annotatedElement, final DisposalCallbackRegistry disposalCallbackRegistry) {
         if (adaptable instanceof Resource && this.isPage(type, annotatedElement)) {
             final Resource resource = (Resource) adaptable;
             return this.getPageFromAdaptable(resource);
@@ -53,7 +53,7 @@ public class CurrentPageProcessor implements Injector, StaticInjectAnnotationPro
     }
 
     @Override
-    public InjectAnnotationProcessor2 createAnnotationProcessor(AnnotatedElement annotatedElement) {
+    public InjectAnnotationProcessor2 createAnnotationProcessor(final AnnotatedElement annotatedElement) {
         final CurrentPage annotation = annotatedElement.getAnnotation(CurrentPage.class);
         if (annotation != null) {
             return new CurrentPageMetadataProviderAnnotationProcessor();

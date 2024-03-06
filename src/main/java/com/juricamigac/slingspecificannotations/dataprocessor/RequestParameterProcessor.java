@@ -30,7 +30,7 @@ public class RequestParameterProcessor implements Injector, StaticInjectAnnotati
     }
 
     @Override
-    public Object getValue(Object adaptable, String fieldName, Type type, AnnotatedElement annotatedElement, DisposalCallbackRegistry disposalCallbackRegistry) {
+    public Object getValue(final Object adaptable, final String fieldName, final Type type, final AnnotatedElement annotatedElement, final DisposalCallbackRegistry disposalCallbackRegistry) {
         if (adaptable instanceof SlingHttpServletRequest && this.isRequestParameterAndFieldIsString(type, annotatedElement)) {
             final RequestParameter annotation = annotatedElement.getAnnotation(RequestParameter.class);
             final String parameterName = this.getParameterName(fieldName, annotation);
@@ -41,7 +41,7 @@ public class RequestParameterProcessor implements Injector, StaticInjectAnnotati
     }
 
     @Override
-    public InjectAnnotationProcessor2 createAnnotationProcessor(AnnotatedElement annotatedElement) {
+    public InjectAnnotationProcessor2 createAnnotationProcessor(final AnnotatedElement annotatedElement) {
         final RequestParameter annotation = annotatedElement.getAnnotation(RequestParameter.class);
         if (annotation != null) {
             return new RequestParameterMetadataProviderAnnotationProcessor();
