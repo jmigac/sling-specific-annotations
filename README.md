@@ -1,9 +1,6 @@
 # Sling specific annotations
 ### Project information
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jmigac/sling-specific-annotations/Java%20CI%20with%20Maven?style=for-the-badge)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/jmigac/sling-specific-annotations?style=for-the-badge)
-[![GitHub license](https://img.shields.io/github/license/jmigac/sling-specific-annotations?style=for-the-badge)](https://github.com/jmigac/additional-graphql-extensions/blob/main/LICENSE)
-![Lines of code](https://img.shields.io/tokei/lines/github/jmigac/sling-specific-annotations?style=for-the-badge)
+[![Java CI with Maven](https://github.com/jmigac/sling-specific-annotations/actions/workflows/ci-maven-build-step-for-features.yml/badge.svg?branch=main)](https://github.com/jmigac/sling-specific-annotations/actions/workflows/ci-maven-build-step-for-features.yml)
 
 ### Maven dependency intro
 Sling specific annotations is a small projects which enables custom annotations for Sling models.
